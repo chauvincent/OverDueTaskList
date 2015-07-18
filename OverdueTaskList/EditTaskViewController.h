@@ -10,4 +10,12 @@
 
 @interface EditTaskViewController : UIViewController
 
+- (IBAction)saveButtonPressed:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 @end
