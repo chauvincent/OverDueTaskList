@@ -16,7 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.textField.text = self.task.taskTitle;
+    self.textView.text = self.task.taskDescription;
+    self.datePicker.date = self.task.taskDate;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,5 +40,14 @@
 */
 
 - (IBAction)saveButtonPressed:(id)sender {
+    [self updateTask];
+    [self.delegate didUpdateTask];
+
+}
+-(void)updateTask{
+    self.task.taskTitle = self.textField.text;
+    self.task.taskDescription = self.textView.text;
+    self.task.taskDate = self.datePicker.date;
+
 }
 @end

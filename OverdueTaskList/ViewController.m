@@ -76,6 +76,13 @@
 }
 
 - (IBAction)reorderButtonPressed:(id)sender {
+    // if table is editing, turn it off
+    if (self.tableView.editing == YES) {
+        [self.tableView setEditing:NO animated:YES];
+        
+    }else{
+        [self.tableView setEditing:YES animated:YES];
+    }
     
 }
 
@@ -157,6 +164,18 @@
     
     [self.tableView reloadData];
 }
+-(void)saveTask{
+    
+    NSMutableArray *taskObjectAsPropertyList = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [self.allTasks count]; i++)
+        [taskObjectAsPropertyList addObject: [self allTasksAsAPropertyList:self.allTasks[i]]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:taskObjectAsPropertyList forKey:TASK_OBJKEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
 
 
 #pragma mark UITableViewDataSource && UITableViewDelegate
@@ -229,10 +248,6 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        
-        
-        
     }
  
 
@@ -244,6 +259,25 @@
     
     [self updateTask:task forIndexPath:indexPath];
     
+}
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    
+    //move object, since moving path
+    TaskObject *task = self.allTasks[sourceIndexPath.row];
+    [self.allTasks removeObjectAtIndex:sourceIndexPath.row];
+    [self.allTasks insertObject:task atIndex:destinationIndexPath.row];
+    [self saveTask];
+    
+    
+}
+#pragma mark detailtaskviewcontrollerdelegate 
+-(void)updateCallBack{
+    [self saveTask];
+    [self.tableView reloadData];
 }
 
 

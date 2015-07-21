@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.textView.delegate = self;
+    self.textField.delegate = self;
     
     // Do any additional setup after loading the view.
 }
@@ -52,6 +54,18 @@
 - (IBAction)addButtonPressed:(id)sender
 {
     [self.delegate didAddTask:[self returnNewTaskObject]];
+}
+#pragma mark UITextField and TextView
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.textField resignFirstResponder];
+    return YES;
+}
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if([text isEqualToString:@"\n"]){
+        [self.textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 @end

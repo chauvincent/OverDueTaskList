@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskObject.h"
+#import "EditTaskViewController.h"
 
-@interface DetailTaskViewController : UIViewController 
+@protocol DetailViewControllerDelegate <NSObject>
+
+-(void)updateCallBack;
+
+@end
+
+
+
+@interface DetailTaskViewController : UIViewController <EditTaskViewControllerDelegate>
 
 @property (strong, nonatomic) TaskObject *tasks;
+
+@property (weak,nonatomic) id <DetailViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
