@@ -87,6 +87,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" text="Default" translatesAutoresizingMaskIntoConstraints="NO" id="A39-Cg-4Nu">
+                                <rect key="frame" x="16" y="111" width="568" height="206"/>
+                                <color key="backgroundColor" red="0.36707097109999998" green="0.65751551399999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="206" id="kZh-JE-jj8"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVG-Mw-6vx">
                                 <rect key="frame" x="16" y="55" width="568" height="30"/>
                                 <constraints>
@@ -120,16 +130,6 @@
                                     <action selector="cancelButtonPressed:" destination="1aL-Mx-Yo5" eventType="touchUpInside" id="Etc-Dp-Xe6"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" text="Default" translatesAutoresizingMaskIntoConstraints="NO" id="A39-Cg-4Nu">
-                                <rect key="frame" x="16" y="111" width="568" height="206"/>
-                                <color key="backgroundColor" red="0.36707097109999998" green="0.65751551399999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="206" id="kZh-JE-jj8"/>
-                                </constraints>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hgx-MV-aQ5">
                                 <rect key="frame" x="16" y="342" width="568" height="224"/>
                                 <date key="date" timeIntervalSinceReferenceDate="458815087.82350498">
