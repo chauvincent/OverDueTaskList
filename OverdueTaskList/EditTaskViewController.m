@@ -21,6 +21,8 @@
     self.textView.text = self.task.taskDescription;
     self.datePicker.date = self.task.taskDate;
     
+    self.textView.delegate = self;
+    self.textField.delegate = self;
     
 }
 
@@ -49,5 +51,18 @@
     self.task.taskDescription = self.textView.text;
     self.task.taskDate = self.datePicker.date;
 
+}
+
+#pragma mark textfield/view delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.textField resignFirstResponder];
+    return YES;
+}
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if([text isEqualToString:@"\n"]){
+        [self.textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 @end

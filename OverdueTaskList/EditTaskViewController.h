@@ -15,7 +15,7 @@
 
 @end
 
-@interface EditTaskViewController : UIViewController
+@interface EditTaskViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 
 @property (weak, nonatomic) id<EditTaskViewControllerDelegate> delegate;

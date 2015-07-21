@@ -210,16 +210,16 @@
     cell.detailTextLabel.text = stringFromDate;
     
     BOOL isOver = [self isOverdue:[NSDate date] and:task.taskDate];
+
     
-    if(task.isCompleted == YES) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else if (isOver == YES) {
+    if (isOver == YES)
         cell.backgroundColor = [UIColor redColor];
-    }
-    else{
-        cell.backgroundColor = [UIColor whiteColor];
-    }
+    
+    if (task.isCompleted == YES)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
 
     return cell;
     
