@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddTaskViewController.h"
-@interface ViewController : UIViewController <AddTaskViewControllerDelegate>
+@interface ViewController : UIViewController <AddTaskViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *allTasks;
 
